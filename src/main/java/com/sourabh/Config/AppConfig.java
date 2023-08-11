@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
@@ -22,12 +23,13 @@ public class AppConfig
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception
     {
-        httpSecurity.sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeHttpRequests(Authorize -> Authorize.requestMatchers("/api/**").authenticated().anyRequest().permitAll())
-                .addFilterBefore(null, null).csrf(csrf -> csrf.disable()
-                .cors(cors -> cors.configurationSource(new CorsConfigurationSource() {
-
-                    @Override
+                .addFilterBefore(new JwtValidator(), BasicAuthenticationFilter.class)
+                .csrf().disable()
+                .cors().configurationSource(new CorsConfigurationSource()
+                {
+                     @Override
                     public CorsConfiguration getCorsConfiguration(HttpServletRequest request) 
                     {
                         CorsConfiguration cfg = new CorsConfiguration();
@@ -40,16 +42,13 @@ public class AppConfig
                         cfg.setAllowedHeaders(Collections.singletonList("*"));
                         cfg.setExposedHeaders(Arrays.asList("Authorization"));
                         cfg.setMaxAge(3600L);
-
                         
-                        throw new UnsupportedOperationException("Unimplemented method 'getCorsConfiguration'");
                         return cfg;
                     }
+                })
+                .and().httpBasic().and().formLogin();
 
-                }
-                ))).and().httpBasic().and().formLogin();
-
-        return httpSecurity.build();
+                return httpSecurity.build();
     }
 
     @Bean
