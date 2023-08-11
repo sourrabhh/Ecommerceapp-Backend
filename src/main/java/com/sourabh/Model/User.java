@@ -31,7 +31,7 @@ public class User
     private String email;
     private String role;
 
-    private long mobile;
+    private String mobile;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Address> address = new ArrayList<>();
