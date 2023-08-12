@@ -1,4 +1,4 @@
-package com.sourabh.Config;
+package com.sourabh.ecommerceapp.Config;
 
 import java.io.IOException;
 import java.util.List;

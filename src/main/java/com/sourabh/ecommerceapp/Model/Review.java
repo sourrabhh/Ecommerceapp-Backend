@@ -1,16 +1,22 @@
-package com.sourabh.Model;
+package com.sourabh.ecommerceapp.Model;
 
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+
 
 @Entity
 public class Review 
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     
     private String review;

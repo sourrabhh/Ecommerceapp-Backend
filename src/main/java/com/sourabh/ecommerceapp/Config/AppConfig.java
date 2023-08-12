@@ -1,4 +1,4 @@
-package com.sourabh.Config;
+package com.sourabh.ecommerceapp.Config;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,12 +16,12 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
 import jakarta.servlet.http.HttpServletRequest;
+
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 public class AppConfig 
 {
-    
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception
     {
@@ -51,11 +51,11 @@ public class AppConfig
                                     }
                                 }));
                     } catch (Exception e) {
+                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }).httpBasic(withDefaults()).formLogin(withDefaults());
 
-                //    .and().httpBasic().and().formLogin();
                 return httpSecurity.build();
     }
 

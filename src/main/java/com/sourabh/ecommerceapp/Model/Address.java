@@ -1,4 +1,4 @@
-package com.sourabh.Model;
+package com.sourabh.ecommerceapp.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -9,8 +9,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "address")
 public class Address 
 {
     @Id

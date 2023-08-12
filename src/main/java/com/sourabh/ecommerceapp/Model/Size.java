@@ -1,4 +1,4 @@
-package com.sourabh.Model;
+package com.sourabh.ecommerceapp.Model;
 
 public class Size 
 {

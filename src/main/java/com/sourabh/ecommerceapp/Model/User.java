@@ -1,4 +1,4 @@
-package com.sourabh.Model;
+package com.sourabh.ecommerceapp.Model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -17,8 +17,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "user")
 public class User 
 {
     @Id
@@ -57,6 +59,7 @@ public class User
     private LocalDateTime createdAt;
 
     public User() {
+        System.out.println("******* In User Class ********");
     }
 
     public long getId() {

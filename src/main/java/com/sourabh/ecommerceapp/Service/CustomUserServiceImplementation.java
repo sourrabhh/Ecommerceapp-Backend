@@ -1,4 +1,4 @@
-package com.sourabh.Service;
+package com.sourabh.ecommerceapp.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.sourabh.Model.User;
-import com.sourabh.Repositories.UserRepository;
+import com.sourabh.ecommerceapp.Model.User;
+import com.sourabh.ecommerceapp.Repositories.UserRepository;
 
 @Service
 public class CustomUserServiceImplementation implements UserDetailsService
