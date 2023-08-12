@@ -1,6 +1,6 @@
 package com.sourabh.ecommerceapp.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -69,8 +69,9 @@ public class AuthController
 
         String token = jwtProvider.generateToken(authentication);
 
-        AuthResponse authResponse = new AuthResponse(token, "SignUp Success");
-
+        AuthResponse authResponse = new AuthResponse();
+        authResponse.setJwt(token);
+        authResponse.setMessage("Sign Up Success");
         return new ResponseEntity<AuthResponse>(authResponse,HttpStatus.CREATED);
     }
 
@@ -85,7 +86,9 @@ public class AuthController
 
         String token = jwtProvider.generateToken(authentication);
 
-        AuthResponse authResponse = new AuthResponse(token, "SignIn Success");
+        AuthResponse authResponse = new AuthResponse();
+        authResponse.setJwt(token);
+        authResponse.setMessage("SignIn Success");
 
         return new ResponseEntity<AuthResponse>(authResponse,HttpStatus.CREATED);
     
