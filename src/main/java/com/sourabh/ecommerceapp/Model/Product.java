@@ -36,6 +36,9 @@ public class Product
     @Column(name = "discounted_price")
     private int discountedPrice;
 
+    @Column(name = "discounted_percent")
+    private int discountedPercent;
+
     private int quantity;
 
     private String brand;
@@ -68,14 +71,15 @@ public class Product
     public Product() {
     }
 
-    public Product(long id, String title, String description, int price, int discountedPrice, int quantity,
-            String brand, String color, String imgUrl, Set<Size> size, List<Rating> ratings, List<Review> reviews,
-            int numRatings, Category category, LocalDateTime createdAt) {
+    public Product(long id, String title, String description, int price, int discountedPrice, int discountedPercent,
+            int quantity, String brand, String color, String imgUrl, Set<Size> size, List<Rating> ratings,
+            List<Review> reviews, int numRatings, Category category, LocalDateTime createdAt) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.price = price;
         this.discountedPrice = discountedPrice;
+        this.discountedPercent = discountedPercent;
         this.quantity = quantity;
         this.brand = brand;
         this.color = color;
@@ -126,6 +130,14 @@ public class Product
 
     public void setDiscountedPrice(int discountedPrice) {
         this.discountedPrice = discountedPrice;
+    }
+
+    public int getDiscountedPercent() {
+        return discountedPercent;
+    }
+
+    public void setDiscountedPercent(int discountedPercent) {
+        this.discountedPercent = discountedPercent;
     }
 
     public int getQuantity() {
@@ -206,6 +218,7 @@ public class Product
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
-    } 
-    
+    }
+
+   
 }
