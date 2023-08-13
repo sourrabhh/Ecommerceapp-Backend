@@ -29,8 +29,8 @@ public class ProductServiceImplementation implements ProductService
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+    // @Autowired
+    // private UserRepository userRepository;
 
     @Override
     public Product createProduct(CreateProductRequest request) 
