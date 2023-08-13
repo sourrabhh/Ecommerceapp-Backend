@@ -51,7 +51,6 @@ public class AppConfig
                                     }
                                 }));
                     } catch (Exception e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }).httpBasic(withDefaults()).formLogin(withDefaults());
