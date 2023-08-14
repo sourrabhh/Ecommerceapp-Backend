@@ -10,7 +10,7 @@ import com.sourabh.ecommerceapp.Model.Product;
 
 public interface CartItemRepository extends JpaRepository<CartItem, Long>
 {
-    @Query(" Select ci From CartItem Where ci.Cart = :cart AND ci.product = :product AND ci.size = :size AND ci.userId = :userId ")
+    @Query("Select ci From CartItem Where ci.Cart = :cart AND ci.product = :product AND ci.size = :size AND ci.userId = :userId")
     CartItem isCartItemExist(@Param("cart") Cart cart, @Param("product") Product product, @Param("size") String size, @Param("userId") Long userId);
     
 }
