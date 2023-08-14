@@ -34,4 +34,57 @@ public class Rating
     private double ratings;
 
     private LocalDateTime createdAt;
+
+    public Rating() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public double getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(double ratings) {
+        this.ratings = ratings;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Rating(long id, User user, Product product, double ratings, LocalDateTime createdAt) {
+        this.id = id;
+        this.user = user;
+        this.product = product;
+        this.ratings = ratings;
+        this.createdAt = createdAt;
+    }
+
+    
 }
