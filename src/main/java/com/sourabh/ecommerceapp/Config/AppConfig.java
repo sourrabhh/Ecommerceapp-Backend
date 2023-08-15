@@ -23,15 +23,13 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class AppConfig 
 {
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
     {
-        httpSecurity.sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeHttpRequests(Authorize -> Authorize.requestMatchers("/api/**").authenticated().anyRequest().permitAll())
                 .addFilterBefore(new JwtValidator(), BasicAuthenticationFilter.class)
-                .csrf(csrf -> {
-                    try {
-                        csrf.disable()
-                                .cors(cors -> cors.configurationSource(new CorsConfigurationSource()
+                .csrf().disable()
+                .cors().configurationSource(new CorsConfigurationSource()
                                 {
                                     @Override
                                     public CorsConfiguration getCorsConfiguration(HttpServletRequest request)
@@ -49,13 +47,12 @@ public class AppConfig
 
                                         return cfg;
                                     }
-                                }));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }).httpBasic(withDefaults()).formLogin(withDefaults());
+                                })
+                                .and()
+                    
+                    .httpBasic().and().formLogin();
 
-                return httpSecurity.build();
+                return http.build();
     }
 
     @Bean
