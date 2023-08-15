@@ -13,9 +13,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "`order`")
 public class Order 
 {
     @Id
@@ -35,7 +36,8 @@ public class Order
 
     private LocalDateTime deliveryDate;
 
-    @OneToOne
+    // @OneToOne
+    @Column(name = "shipping_address")
     private String shippingAddress;
 
     @Embedded
@@ -49,7 +51,7 @@ public class Order
 
     private String orderStatus;
 
-    private int totalItm;
+    private int totalItem;
 
     private LocalDateTime createdAt;
 
@@ -152,12 +154,12 @@ public class Order
         this.orderStatus = orderStatus;
     }
 
-    public int getTotalItm() {
-        return totalItm;
+    public int getTotalItem() {
+        return totalItem;
     }
 
-    public void setTotalItm(int totalItm) {
-        this.totalItm = totalItm;
+    public void setTotalItem(int totalItem) {
+        this.totalItem = totalItem;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -171,8 +173,8 @@ public class Order
     public Order(long id, String orderId, User user, List<OrderItem> orderItem, LocalDateTime orderDate,
             LocalDateTime deliveryDate, String shippingAddress,
             com.sourabh.ecommerceapp.Model.PaymentDetails paymentDetails, double totalPrice,
-            Integer totalDiscountedPrice, Integer discount, String orderStatus, int totalItm, LocalDateTime createdAt) 
-    {
+            Integer totalDiscountedPrice, Integer discount, String orderStatus, int totalItem,
+            LocalDateTime createdAt) {
         this.id = id;
         this.orderId = orderId;
         this.user = user;
@@ -180,13 +182,15 @@ public class Order
         this.orderDate = orderDate;
         this.deliveryDate = deliveryDate;
         this.shippingAddress = shippingAddress;
-        this.PaymentDetails = paymentDetails;
+        PaymentDetails = paymentDetails;
         this.totalPrice = totalPrice;
         this.totalDiscountedPrice = totalDiscountedPrice;
         this.discount = discount;
         this.orderStatus = orderStatus;
-        this.totalItm = totalItm;
+        this.totalItem = totalItem;
         this.createdAt = createdAt;
     }
+
+    
   
 }
