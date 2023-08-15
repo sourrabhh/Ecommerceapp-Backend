@@ -17,7 +17,7 @@ import com.sourabh.ecommerceapp.Model.Category;
 import com.sourabh.ecommerceapp.Model.Product;
 import com.sourabh.ecommerceapp.Repositories.CategoryRepository;
 import com.sourabh.ecommerceapp.Repositories.ProductRepository;
-import com.sourabh.ecommerceapp.Repositories.UserRepository;
+// import com.sourabh.ecommerceapp.Repositories.UserRepository;
 import com.sourabh.ecommerceapp.Request.CreateProductRequest;
 
 @Service
