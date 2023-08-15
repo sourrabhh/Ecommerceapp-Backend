@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sourabh.ecommerceapp.Config.JwtProvider;
 import com.sourabh.ecommerceapp.Exceptions.UserException;
+import com.sourabh.ecommerceapp.Model.Cart;
 import com.sourabh.ecommerceapp.Model.User;
 import com.sourabh.ecommerceapp.Repositories.UserRepository;
 import com.sourabh.ecommerceapp.Request.LoginRequest;
 import com.sourabh.ecommerceapp.Response.AuthResponse;
+import com.sourabh.ecommerceapp.Service.CartService;
 import com.sourabh.ecommerceapp.Service.CustomUserServiceImplementation;
 
 @RestController
@@ -30,16 +32,18 @@ public class AuthController
     private CustomUserServiceImplementation customUserServiceImplementation;
     private JwtProvider jwtProvider;
     private PasswordEncoder passwordEncoder;
-
+    private CartService cartService;
     
 
     public AuthController(UserRepository userRepository,
             CustomUserServiceImplementation customUserServiceImplementation, JwtProvider jwtProvider,
-            PasswordEncoder passwordEncoder) {
+            PasswordEncoder passwordEncoder,CartService cartService) 
+    {
         this.userRepository = userRepository;
         this.customUserServiceImplementation = customUserServiceImplementation;
         this.jwtProvider = jwtProvider;
         this.passwordEncoder = passwordEncoder;
+        this.cartService = cartService;
     }
 
     @PostMapping("/signup")
@@ -63,6 +67,10 @@ public class AuthController
         createdUser.setLastName(lastName);
 
         User saveUser = userRepository.save(createdUser);
+
+        // CART CREATION 
+        Cart cart = cartService.createCart(saveUser);
+        // 
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(saveUser.getEmail(), saveUser.getPassword());
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -107,4 +115,7 @@ public class AuthController
         }
         return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
     }
+
+
+
 }
