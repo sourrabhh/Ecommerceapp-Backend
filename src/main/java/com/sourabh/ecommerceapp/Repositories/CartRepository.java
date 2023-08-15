@@ -8,6 +8,8 @@ import com.sourabh.ecommerceapp.Model.Cart;
 
 public interface CartRepository extends JpaRepository<Cart, Long>
 {
-    @Query("Select c from Cart Where c.user.id = :userId")
+    // @Query("Select c from Cart Where c.user.id = :userId")
+    
+    @Query(" SELECT c FROM Cart c WHERE c.user.id = :userId ")
     public Cart findByUserId(@Param("userId") Long userId);
 }

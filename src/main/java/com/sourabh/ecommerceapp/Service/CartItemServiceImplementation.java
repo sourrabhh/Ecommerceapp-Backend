@@ -12,7 +12,7 @@ import com.sourabh.ecommerceapp.Model.CartItem;
 import com.sourabh.ecommerceapp.Model.Product;
 import com.sourabh.ecommerceapp.Model.User;
 import com.sourabh.ecommerceapp.Repositories.CartItemRepository;
-import com.sourabh.ecommerceapp.Repositories.CartRepository;
+// import com.sourabh.ecommerceapp.Repositories.CartRepository;
 
 @Service
 public class CartItemServiceImplementation implements CartItemService
@@ -23,8 +23,8 @@ public class CartItemServiceImplementation implements CartItemService
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private CartRepository cartRepository;
+    // @Autowired
+    // private CartRepository cartRepository;
 
     @Override
     public CartItem createCartItem(CartItem cartItem) 

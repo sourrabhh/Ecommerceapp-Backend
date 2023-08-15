@@ -1,6 +1,6 @@
 package com.sourabh.ecommerceapp.Service;
 
-import org.springframework.security.core.userdetails.User;
+// import org.springframework.security.core.userdetails.User;
 
 import com.sourabh.ecommerceapp.Exceptions.CartItemException;
 import com.sourabh.ecommerceapp.Exceptions.UserException;
