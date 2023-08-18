@@ -154,5 +154,11 @@ public class ProductServiceImplementation implements ProductService
         Page<Product> filterProducts = new PageImpl<>(pageContent,pageable, products.size());
         return filterProducts;
     }
+
+    @Override
+    public List<Product> findAllProduct() 
+    {
+        return productRepository.findAll();
+    }
     
 }
