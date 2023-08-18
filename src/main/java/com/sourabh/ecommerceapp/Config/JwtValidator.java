@@ -28,10 +28,13 @@ public class JwtValidator extends OncePerRequestFilter
             throws ServletException, IOException 
             {
                 String jwt = request.getHeader(JwtConstant.JWT_HEADER);
+                System.out.println("JWT TOken:: " +jwt);
 
                 if(jwt != null)
                 {
+                    System.out.println("JWT is not Null " +jwt);
                     jwt = jwt.substring(7);
+                    System.out.println("Processed JWT Token: " + jwt);
                     try {
                         SecretKey key = Keys.hmacShaKeyFor(JwtConstant.SECRET_KEY.getBytes());
 
