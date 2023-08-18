@@ -56,7 +56,7 @@ public class OrderController
         User user = userService.findUserProfileByJwt(jwt);
         Order order = orderService.findOrderById(user.getId());
 
-        return new ResponseEntity<Order>(order, HttpStatus.CREATED);
+        return new ResponseEntity<Order>(order, HttpStatus.ACCEPTED);
     }
 
 }

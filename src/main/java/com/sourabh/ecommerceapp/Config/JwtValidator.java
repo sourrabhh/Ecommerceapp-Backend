@@ -27,8 +27,6 @@ public class JwtValidator extends OncePerRequestFilter
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException 
             {
-                // throw new UnsupportedOperationException("Unimplemented method 'doFilterInternal'");
-
                 String jwt = request.getHeader(JwtConstant.JWT_HEADER);
 
                 if(jwt != null)
